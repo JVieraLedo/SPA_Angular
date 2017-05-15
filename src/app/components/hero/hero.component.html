@@ -1,0 +1,48 @@
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Heroe</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#bio" role="tab">Sobre {{heroData.nombre}}</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home" role="tabpanel">
+    <div class="row">
+      <div class="col-6">
+        <div class="card-block">
+          <img class="card-img-top" [src]="heroData.img" alt="{{heroData.nombre}}">
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card-block">
+          <div class="row">
+            <div class="col-6">
+              <h4 class="card-title">{{heroData.nombre | uppercase}}</h4>
+              <p class="card-text">
+                <b class="text-muted">{{heroData.aparicion | date:'MM-y'}} &copy; <em>{{heroData.casa}}</em></b>
+              </p>
+            </div>
+            <div class="col-6">
+              <img *ngIf="heroData.casa == 'DC'" class="card-img-top float-right" src="./assets/img/DC_Logo.png" style="width: 50%;" alt="{{heroData.nombre}}"/>
+              <img *ngIf="heroData.casa == 'Marvel'" class="card-img-top float-right" src="assets/img/marvel_logo.jpg" style="width: 50%;" alt="{{heroData.nombre}}"/>
+            </div>
+          </div>
+        </div>
+        <a [routerLink]="['/heroes']" class="btn btn-primary btn-block">Volver a los heroes</a>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="bio" role="tabpanel">
+    <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+      <div class="card-block">
+        <h3 class="card-title">Biografia {{heroData.nombre}} </h3>
+        <p class="card-text">{{heroData.bio}}</p>
+        <a [routerLink]="['/heroes']" class="btn btn-primary btn-block">Volver a los heroes</a>
+      </div>
+    </div>
+  </div>
+</div>

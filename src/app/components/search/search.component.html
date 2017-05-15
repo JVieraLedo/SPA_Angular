@@ -1,0 +1,25 @@
+<h2>Buscando: <span class="badge badge-primary">{{text}}</span></h2>
+<hr>
+<div class="card-columns" *ngIf="showHeroes">
+  <div class="card animated fadeIn fast" *ngFor="let hero of heroes; let i = index">
+    <img class="card-img-top img-fluid" [src]="hero.img" [alt]="hero.nombre">
+    <div class="card-block">
+      <h4 class="card-title">{{hero.nombre}}</h4>
+      <p class="card-text">{{hero.bio}}</p>
+      <p class="card-text">
+        <small class="text-muted">{{hero.aparicion}}</small>
+        <small class="text-muted float-right">&copy; <em>{{hero.casa}}</em></small>
+      </p>
+      <button (click)="showHero(i)"
+              type="button" class="btn btn-block btn-outline-primary" >
+        Ver mas ...
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="col-12" *ngIf="!showHeroes">
+  <div class="alert alert-danger" role="alert">
+    <strong>Ouch!</strong> no hay resultados para la busqueda realizada.
+  </div>
+</div>
